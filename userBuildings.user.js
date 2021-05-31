@@ -6,7 +6,7 @@
 // @author       KeineAhnung
 // @match        https://rettungssimulator.online/profile/
 // @match        https://rettungssimulator.online/profile
-// @updateURL    https://github.com/Ron31/LSS-Scripts/raw/dev/resi-missionHelper/missionHelper.user.js
+// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
 // ==/UserScript==
 
 window.onload = async function() {
