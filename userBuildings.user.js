@@ -1,16 +1,17 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Count the buildings
 // @author       KeineAhnung
-// @match        https://rettungssimulator.online/profile/
 // @match        https://rettungssimulator.online/profile
+// @match        https://rettungssimulator.online/profile/
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
 // @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
 // ==/UserScript==
 
-window.addEventListener('load', async function() {
+window.onload = async function buildingStats() {
+    console.log("Building")
     let style = document.createElement("style");
     style.innerText = '.card-headline.card-headline-info{background-color:#2196f3;color:#fff}.card .card-body.card-body-info{background-color:#282C35;color:#fff}.card';
     document.head.appendChild(style);
@@ -58,7 +59,6 @@ window.addEventListener('load', async function() {
     parentDivHeight = parentDivHeight.replace("px", "");
     let newDiv = document.createElement("div");
     newDiv.classList.add('card', 'buildingCounter');
-    newDiv.innerHTML = 'TEST';
     newDiv.style.float = "right";
     newDiv.innerHTML = '<div class="card-headline card-headline-info">Gebäude</div><div class="card-body card-body-info"><div class="alert alert-info"></div><table id="tableBuildings"></table></div>';
     parentDivHeight = Number(parentDivHeight)
@@ -132,4 +132,4 @@ window.addEventListener('load', async function() {
     }
 
     table.appendChild(tbody);
-})
+}
