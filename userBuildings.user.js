@@ -4,6 +4,7 @@
 // @version      1.1
 // @description  Count the buildings
 // @author       KeineAhnung
+// @run-at       document-end
 // @match        https://rettungssimulator.online/profile
 // @match        https://rettungssimulator.online/profile/
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
@@ -11,7 +12,6 @@
 // ==/UserScript==
 
 window.onload = async function buildingStats() {
-    console.log("Building")
     let style = document.createElement("style");
     style.innerText = '.card-headline.card-headline-info{background-color:#2196f3;color:#fff}.card .card-body.card-body-info{background-color:#282C35;color:#fff}.card';
     document.head.appendChild(style);
