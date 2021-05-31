@@ -4,8 +4,8 @@
 // @version      1.0
 // @description  Count the buildings
 // @author       KeineAhnung
-// @match        https://rettungssimulator.online/profile/
-// @match        https://rettungssimulator.online/profile
+// @include        https://rettungssimulator.online/profile/
+// @include       https://rettungssimulator.online/profile
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
 // ==/UserScript==
 
