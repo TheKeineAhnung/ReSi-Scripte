@@ -7,6 +7,7 @@
 // @include      https://rettungssimulator.online/profile/
 // @include      https://rettungssimulator.online/profile
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
+// @downloadURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
 // ==/UserScript==
 
 window.onload = async function() {
