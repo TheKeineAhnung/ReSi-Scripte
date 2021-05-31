@@ -9,10 +9,6 @@
 // @updateURL    https://github.com/Ron31/LSS-Scripts/raw/dev/resi-missionHelper/missionHelper.user.js
 // ==/UserScript==
 
-function sleep(ms) {
-    return new Promise(resolve => { setTimeout(resolve, ms) })
-}
-
 window.onload = async function() {
     let style = document.createElement("style");
     style.innerText = '.card-headline.card-headline-info{background-color:#2196f3;color:#fff}.card .card-body.card-body-info{background-color:#282C35;color:#fff}.card';
