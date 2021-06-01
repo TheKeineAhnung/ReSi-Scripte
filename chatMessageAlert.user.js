@@ -6,8 +6,8 @@
 // @author       KeineAhnung
 // @run-at       document-end
 // @include      https://rettungssimulator.online/
-// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/Develop/chatMessageAlert.user.js
-// @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/Develop/chatMessageAlert.user.js
+// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/chatMessageAlert.user.js
+// @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/chatMessageAlert.user.js
 // ==/UserScript==
 
 window.onload = async function main() {
