@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -13,7 +13,7 @@
 
 window.onload = async function buildingStats() {
     let style = document.createElement("style");
-    style.innerText = '.card-headline.card-headline-info{background-color:#2196f3;color:#fff}.card .card-body.card-body-info{background-color:#282C35;color:#fff}.card';
+    style.innerText = ".card-headline.card-headline-danger{background-color:#DB1111;color:#fff}.card";
     document.head.appendChild(style);
     var firestation = 0;
     var firebrigadeschool = 0;
@@ -23,7 +23,7 @@ window.onload = async function buildingStats() {
     var policestationBP = 0;
     var policeschool = 0;
     var round = 0;
-    var differentBuildingTypes = 8
+    var allBuildingTypes = 7;
 
     await $.ajax({
         url: "/api/userBuildings/",
@@ -51,85 +51,34 @@ window.onload = async function buildingStats() {
             }
         }
     })
-    var completeBuildings = round;
-    round = 0
-    var parentDiv = document.getElementsByClassName("detail-subtitle");
-    var parentDivHeight = window.getComputedStyle(parentDiv[0]);
-    parentDivHeight = parentDivHeight.getPropertyValue("height");
-    parentDivHeight = parentDivHeight.replace("px", "");
-    let newDiv = document.createElement("div");
-    newDiv.classList.add('card', 'buildingCounter');
-    newDiv.style.float = "right";
-    newDiv.innerHTML = '<div class="card-headline card-headline-info">Gebäude</div><div class="card-body card-body-info"><div class="alert alert-info"></div><table id="tableBuildings"></table></div>';
-    parentDivHeight = Number(parentDivHeight)
-    var finalHeight = Number(parentDivHeight - 25);
-    var marginTop = String("-" + finalHeight + "px");
-    newDiv.style.marginTop = marginTop;
-    parentDiv[0].appendChild(newDiv);
-    var table = document.querySelector('#tableBuildings');
-    var tbody = document.createElement('tbody')
-    while (differentBuildingTypes != round) {
+
+    var parentDiv = document.getElementsByClassName("card-collapse");
+    parentDiv0 = parentDiv[0].parentNode;
+    parentDiv1 = parentDiv[1];
+    let showBuildingDiv = document.createElement("div");
+    showBuildingDiv.classList.add("card", "card-collapse", "collapsed");
+    showBuildingDiv.innerHTML = '<div class="card-headline card-headline-danger">Gebäude <svg class="svg-inline--fa fa-angle-up fa-w-10 card-collapse-toggle pointer right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"></path></svg></div><div class="card-body"><div class="element-container"><table class="striped table-divider" id="theadBuildings"><thead><tr><th style="text-align: center;">Typ</th><th style="text-align: center;">Anzahl</th></tr></thead></table></div></div>';
+    parentDiv0.insertBefore(showBuildingDiv, parentDiv1);
+    var thead = document.querySelector("#theadBuildings");
+    var tbody = document.createElement("tbody");
+    tbody.style.width = "100%";
+    var round = 0;
+    var totalBuildingList = ["Feuerwachen", "Feuerwehrschulen", "Rettungswachen", "Krankenhäuser", "Landespolizeiwachen", "Bundespolizeiwachen", "Polizeischulen"]
+    var buildingCountList = [firestation, firebrigadeschool, ambulancestation, hospital, policestationLP, policestationBP, policeschool]
+    while (allBuildingTypes > round) {
         var tr = document.createElement("tr");
-        var number = document.createElement('td');
-        var type = document.createElement('td');
-        if (round == 0) {
-            number.innerText = firestation;
-            if (firestation == 1) {
-                type.innerText = "Feuerwache";
-            } else {
-                type.innerText = "Feuerwachen";
-            }
-        } else if (round == 1) {
-            number.innerText = firebrigadeschool;
-            if (firebrigadeschool == 1) {
-                type.innerText = "Feuerwehrschule";
-            } else {
-                type.innerText = "Feuerwehrschule";
-            }
-        } else if (round == 2) {
-            number.innerText = ambulancestation;
-            if (ambulancestation == 1) {
-                type.innerText = "Rettungswache";
-            } else {
-                type.innerText = "Rettungswachen";
-            }
-        } else if (round == 3) {
-            number.innerText = hospital;
-            if (hospital == 1) {
-                type.innerText = "Krankenhaus";
-            } else {
-                type.innerText = "Krankenhäuser";
-            }
-        } else if (round == 4) {
-            number.innerText = policestationLP;
-            if (policestationLP == 1) {
-                type.innerText = "Landespolizeiwache";
-            } else {
-                type.innerText = "Landespolizeiwachen";
-            }
-        } else if (round == 5) {
-            number.innerText = policestationBP;
-            if (policestationBP == 1) {
-                type.innerText = "Bundespolizeiwache";
-            } else {
-                type.innerText = "Bundespolizeiwachen";
-            }
-        } else if (round == 6) {
-            number.innerText = policeschool;
-            if (policeschool == 1) {
-                type.innerText = "Polizeischule";
-            } else {
-                type.innerText = "Polizeischule";
-            }
-        } else {
-            number.innerText = completeBuildings;
-            type.innerText = "Gebäude insgesamt"
-        }
-        tr.appendChild(number);
+        var type = document.createElement("td");
+        type.style.textAlign = "center";
+        type.style.width = "50%";
+        var count = document.createElement("td");
+        count.style.textAlign = "center";
+        count.style.width = "50%";
+        type.innerText = totalBuildingList[round];
+        count.innerText = buildingCountList[round];
         tr.appendChild(type);
-        tbody.appendChild(tr)
+        tr.appendChild(count);
+        tbody.appendChild(tr);
         round++;
     }
-
-    table.appendChild(tbody);
+    thead.appendChild(tbody);
 }
