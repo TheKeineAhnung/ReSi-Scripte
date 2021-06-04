@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Vehicles
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  Count the Vehicles
 // @author       KeineAhnung
 // @run-at       document-end
@@ -12,12 +12,12 @@
 // ==/UserScript==
 
 window.onload = async function vehicleStats() {
-    //check localStorage
-    if (!localStorage.vehicleCategories || JSON.parse(localStorage.vehicleCategories).lastUpdate < new Date().getTime() - 6000000000) {
-        await $.getJSON('/api/vehicleCategories').done((data) => localStorage.setItem('vehicleCategories', JSON.stringify({ lastUpdate: new Date().getTime(), value: data })));
+    //check sessionStorage
+    if (!sessionStorage.vehicleCategories || JSON.parse(sessionStorage.vehicleCategories).lastUpdate < new Date().getTime() - 6000000000) {
+        await $.getJSON('/api/vehicleCategories').done((data) => sessionStorage.setItem('vehicleCategories', JSON.stringify({ lastUpdate: new Date().getTime(), value: data })));
     }
-    const vehicleCategories = JSON.parse(localStorage.vehicleCategories).value;
-    console.log(localStorage)
+    const vehicleCategories = JSON.parse(sessionStorage.vehicleCategories).value;
+    console.log(sessionStorage);
     saveVehicleCategories();
     //vehicle Variables
     var hlf = 0;
@@ -55,7 +55,7 @@ window.onload = async function vehicleStats() {
     });
 
     async function assignVehicleCategories(r, actualVehicle) {
-        var assignVehicle = localStorage.getItem(r[actualVehicle].vehicleID);
+        var assignVehicle = sessionStorage.getItem(r[actualVehicle].vehicleID);
         if (assignVehicle == "hlf") {
             hlf++;
         } else if (assignVehicle == "lf") {
@@ -122,7 +122,7 @@ window.onload = async function vehicleStats() {
             var count = document.createElement('td');
             count.style.textAlign = 'center';
             count.style.width = '50%';
-            var vehicleType = localStorage.getItem(exampleIdList[round]);
+            var vehicleType = sessionStorage.getItem(exampleIdList[round]);
             type.innerText = vehicleType.toLocaleUpperCase();
             count.innerText = totalVehicleList[round];
             tr.appendChild(type);
@@ -134,15 +134,15 @@ window.onload = async function vehicleStats() {
     }
 
     async function saveVehicleCategories() {
-        //check localStorage
-        if (localStorage.getItem('lastStorageUpdate') === null || localStorage.getItem('lastStorageUpdate') === undefined || localStorage.getItem('lastStorageUpdate') === undefined) {
+        //check sessionStorage
+        if (sessionStorage.getItem('lastStorageUpdate') === null || sessionStorage.getItem('lastStorageUpdate') === undefined || sessionStorage.getItem('lastStorageUpdate') === undefined) {
             var lastUpdateVehicle = new Date().getTime();
-            localStorage.setItem('lastStorageUpdate', lastUpdateVehicle);
+            sessionStorage.setItem('lastStorageUpdate', lastUpdateVehicle);
         }
-        if (localStorage.getItem('1') === null || localStorage.getItem('1') === undefined || localStorage.getItem('lastStorageUpdate') < localStorage.getItem('lastStorageUpdate') - 86400000) {
+        if (sessionStorage.getItem('1') === null || sessionStorage.getItem('1') === undefined || sessionStorage.getItem('lastStorageUpdate') < sessionStorage.getItem('lastStorageUpdate') - 86400000) {
             //create Variables for vehicleIds
             var lastUpdateVehicle = new Date().getTime();
-            localStorage.setItem('lastStorageUpdate', lastUpdateVehicle);
+            sessionStorage.setItem('lastStorageUpdate', lastUpdateVehicle);
             var lf = [vehicleCategories.lf];
             var hlf = [vehicleCategories.hlf];
             var tlf = [vehicleCategories.tlf];
@@ -164,12 +164,12 @@ window.onload = async function vehicleStats() {
             var gw_a = [vehicleCategories.gw_a]
             var all = [];
             all.push(lf, hlf, tlf, elw1, kdow, dlk, tmf, dlk_tmf, rw, mtw, gw_tier, gw_g, sw, gw_mess, rtw, lpol, bpol, elw2, gw_a);
-            //set localStorage
+            //set sessionStorage
             for (vehicleType in all) {
                 for (specificVehicleType in all[vehicleType]) {
                     var round = 0;
                     for (vehicleIdNumber in all[vehicleType][specificVehicleType].ids) {
-                        localStorage.setItem(all[vehicleType][specificVehicleType].ids[round], all[vehicleType][specificVehicleType].shortName);
+                        sessionStorage.setItem(all[vehicleType][specificVehicleType].ids[round], all[vehicleType][specificVehicleType].shortName);
                         round++;
                         if (vehicleIdNumber < 0) {
                             break;
