@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Vehicles
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Count the Vehicles
 // @author       KeineAhnung
 // @run-at       document-end
@@ -13,25 +13,19 @@
 
 window.onload = async function vehicleStats() {
     //check localStorage
-    if (!localStorage.vehicleCategories ||
-        JSON.parse(localStorage.vehicleCategories).lastUpdate <
-        new Date().getTime() - 6000000000
-    ) {
-        await $.getJSON('/api/vehicleCategories').done((data) =>
-            localStorage.setItem(
-                'vehicleCategories',
-                JSON.stringify({ lastUpdate: new Date().getTime(), value: data })
-            )
-        );
+    if (!localStorage.vehicleCategories || JSON.parse(localStorage.vehicleCategories).lastUpdate < new Date().getTime() - 6000000000) {
+        await $.getJSON('/api/vehicleCategories').done((data) => localStorage.setItem('vehicleCategories', JSON.stringify({ lastUpdate: new Date().getTime(), value: data })));
     }
     const vehicleCategories = JSON.parse(localStorage.vehicleCategories).value;
+    console.log(localStorage)
     saveVehicleCategories();
     //vehicle Variables
     var hlf = 0;
     var lf = 0;
     var tlf = 0;
-    var elw1 = 0;
     var kdow = 0;
+    var elw1 = 0;
+    var elw2 = 0;
     var dlk = 0;
     var tmf = 0;
     var rw = 0;
@@ -40,11 +34,12 @@ window.onload = async function vehicleStats() {
     var gw_g = 0;
     var sw = 0;
     var gw_mess = 0;
+    var gw_a = 0;
     var rtw = 0;
     var lpol = 0;
     var bpol = 0;
     var dlk_tmf = 0;
-    var allVehicleTypes = 15;
+    var allVehicleTypes = 17;
 
     //get User Vehicles
     $.ajax({
@@ -61,38 +56,42 @@ window.onload = async function vehicleStats() {
 
     async function assignVehicleCategories(r, actualVehicle) {
         var assignVehicle = localStorage.getItem(r[actualVehicle].vehicleID);
-        if (assignVehicle == 'hlf') {
+        if (assignVehicle == "hlf") {
             hlf++;
-        } else if (assignVehicle == 'lf') {
+        } else if (assignVehicle == "lf") {
             lf++;
-        } else if (assignVehicle == 'tlf') {
+        } else if (assignVehicle == "tlf") {
             tlf++;
-        } else if (assignVehicle == 'elw1') {
+        } else if (assignVehicle == "elw1") {
             elw1++;
-        } else if (assignVehicle == 'kdow') {
+        } else if (assignVehicle == "kdow") {
             kdow++;
-        } else if (assignVehicle == 'dlk') {
+        } else if (assignVehicle == "dlk") {
             dlk++;
-        } else if (assignVehicle == 'tmf') {
+        } else if (assignVehicle == "tmf") {
             tmf++;
-        } else if (assignVehicle == 'rw') {
+        } else if (assignVehicle == "rw") {
             rw++;
-        } else if (assignVehicle == 'mtw') {
+        } else if (assignVehicle == "mtw") {
             mtw++;
-        } else if (assignVehicle == 'gw_tier') {
+        } else if (assignVehicle == "gw_tier") {
             gw_tier++;
-        } else if (assignVehicle == 'gw_g') {
+        } else if (assignVehicle == "gw_g") {
             gw_g++;
-        } else if (assignVehicle == 'sw') {
+        } else if (assignVehicle == "sw") {
             sw++;
-        } else if (assignVehicle == 'gw_mess') {
+        } else if (assignVehicle == "gw_mess") {
             gw_mess++;
-        } else if (assignVehicle == 'rtw') {
+        } else if (assignVehicle == "rtw") {
             rtw++;
-        } else if (assignVehicle == 'lpol') {
+        } else if (assignVehicle == "lpol") {
             lpol++;
-        } else if (assignVehicle == 'bpol') {
+        } else if (assignVehicle == "bpol") {
             bpol++;
+        } else if (assignVehicle == "gw_a") {
+            gw_a++;
+        } else if (assignVehicle == "elw2") {
+            elw2++;
         }
         dlk_tmf = dlk + tmf;
     }
@@ -113,9 +112,8 @@ window.onload = async function vehicleStats() {
         var tbody = document.createElement('tbody');
         tbody.style.width = '100%';
         var round = 0;
-        var totalVehicleList = [lf, hlf, tlf, elw1, kdow, dlk_tmf, rw, mtw, gw_tier, gw_g, sw, gw_mess, rtw, lpol, bpol, ];
-        var exampleIdList = [1, 7, 9, 31, 32, 33, 39, 34, 45, 44, 46, 50, 43, 52, 53];
-        var totalVehicleListLength = totalVehicleList.length - 1;
+        var totalVehicleList = [lf, hlf, tlf, kdow, elw1, elw2, dlk_tmf, rw, mtw, gw_tier, sw, gw_g, gw_mess, gw_a, rtw, lpol, bpol];
+        var exampleIdList = [1, 7, 9, 32, 31, 59, 33, 39, 34, 45, 44, 50, 46, 60, 43, 52, 53];
         while (allVehicleTypes > round) {
             var tr = document.createElement('tr');
             var type = document.createElement('td');
@@ -162,8 +160,10 @@ window.onload = async function vehicleStats() {
             var rtw = [vehicleCategories.rtw];
             var lpol = [vehicleCategories.lpol];
             var bpol = [vehicleCategories.bpol];
+            var elw2 = [vehicleCategories.elw2];
+            var gw_a = [vehicleCategories.gw_a]
             var all = [];
-            all.push(lf, hlf, tlf, elw1, kdow, dlk, tmf, dlk_tmf, rw, mtw, gw_tier, gw_g, sw, gw_mess, rtw, lpol, bpol);
+            all.push(lf, hlf, tlf, elw1, kdow, dlk, tmf, dlk_tmf, rw, mtw, gw_tier, gw_g, sw, gw_mess, rtw, lpol, bpol, elw2, gw_a);
             //set localStorage
             for (vehicleType in all) {
                 for (specificVehicleType in all[vehicleType]) {

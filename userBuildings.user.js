@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -22,8 +22,9 @@ window.onload = async function buildingStats() {
     var policestationLP = 0;
     var policestationBP = 0;
     var policeschool = 0;
+    var controlRoom = 0;
     var round = 0;
-    var allBuildingTypes = 7;
+    var allBuildingTypes = 8;
 
     await $.ajax({
         url: "/api/userBuildings/",
@@ -46,6 +47,8 @@ window.onload = async function buildingStats() {
                     policestationBP++;
                 } else if (r[round].buildingType == 7) {
                     policeschool++;
+                } else if (r[round].buildingType == 8) {
+                    controlRoom++;
                 }
                 round++;
             }
@@ -63,8 +66,8 @@ window.onload = async function buildingStats() {
     var tbody = document.createElement("tbody");
     tbody.style.width = "100%";
     var round = 0;
-    var totalBuildingList = ["Feuerwachen", "Feuerwehrschulen", "Rettungswachen", "Krankenhäuser", "Landespolizeiwachen", "Bundespolizeiwachen", "Polizeischulen"]
-    var buildingCountList = [firestation, firebrigadeschool, ambulancestation, hospital, policestationLP, policestationBP, policeschool]
+    var totalBuildingList = ["Leitstellen", "Feuerwachen", "Feuerwehrschulen", "Rettungswachen", "Krankenhäuser", "Landespolizeiwachen", "Bundespolizeiwachen", "Polizeischulen"]
+    var buildingCountList = [controlRoom, firestation, firebrigadeschool, ambulancestation, hospital, policestationLP, policestationBP, policeschool]
     while (allBuildingTypes > round) {
         var tr = document.createElement("tr");
         var type = document.createElement("td");
