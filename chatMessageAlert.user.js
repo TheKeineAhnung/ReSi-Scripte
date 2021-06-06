@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatMessageAlert
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Alert when new Message is in the Chat
 // @author       KeineAhnung
 // @run-at       document-end
@@ -11,22 +11,19 @@
 // ==/UserScript==
 
 window.onload = async function main() {
-    var messagesSinceReload = 0
-    var allMessages = document.querySelectorAll(".message");
-    var targetDiv = document.querySelector('.messages');
-    const config = { childList: true, subtree: true };
-    var audio = new Audio('');
-
-    const observer = new MutationObserver(function(mutations) {
-        var newestMessage;
-        var allMessages = document.querySelectorAll(".message");
-        for (var i of allMessages) {
-            var newestMessageClass = i.classList;
+    $.ajax({
+        url: "/api/user",
+        dataType: "json",
+        type : "GET",
+        success : function(r) {
+            sessionStorage.setItem("userName", r.userName)
         }
-        if (newestMessageClass == "message" && messagesSinceReload != 0) {
-            audio.play();
-        } else {}
-        messagesSinceReload++;
-    })
-    observer.observe(targetDiv, config);
+    });
+    var audio = new Audio('');
+    socket.on("associationMessage", (messageObject) =>{   
+    console.log(messageObject.userName)
+    if (messageObject.userName != sessionStorage.getItem("userName")) {
+        audio.play();
+    }
+});
 }
