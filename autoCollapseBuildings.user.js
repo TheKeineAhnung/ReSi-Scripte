@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Auto Building Collapse
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.0.1
 // @description  Auto collapse buildings
 // @author       KeineAhnung
 // @run-at       document-end
-// @match        https://rettungssimulator.online
+// @include      https://rettungssimulator.online
+// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/autoCollapseBuildings.user.js
+// @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/autoCollapseBuildings.user.js
 // @grant        none
 // ==/UserScript==
 
