@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.3.0
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end

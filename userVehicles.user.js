@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Vehicles
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.2.0
 // @description  Count the Vehicles
 // @author       KeineAhnung
 // @run-at       document-end

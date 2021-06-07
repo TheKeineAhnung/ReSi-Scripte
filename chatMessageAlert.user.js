@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatMessageAlert
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.1.0
 // @description  Alert when new Message is in the Chat
 // @author       KeineAhnung
 // @run-at       document-end
