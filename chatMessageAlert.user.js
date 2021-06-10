@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatMessageAlert
 // @namespace    http://tampermonkey.net/
-// @version      1.1.0
+// @version      1.1.1
 // @description  Alert when new Message is in the Chat
 // @author       KeineAhnung
 // @run-at       document-end
@@ -21,9 +21,14 @@ window.onload = async function main() {
     });
     var audio = new Audio('');
     socket.on("associationMessage", (messageObject) =>{   
-    console.log(messageObject.userName)
-    if (messageObject.userName != sessionStorage.getItem("userName")) {
-        audio.play();
-    }
-});
+        if (messageObject.userName != sessionStorage.getItem("userName")) {
+            audio.play();
+            var icons = document.querySelectorAll("link[rel~='icon']");
+            var iconFirst = "images/favicons/favicon-32x32.png?v=WGLwy6Y942";
+            icons[0].href = "https://wiki.rettungssimulator.online/resources/assets/ReSi-Wiki-Logo.png";
+            setTimeout(function() {
+                icons[0].href = iconFirst;
+            }, 1000)
+        }
+    })
 }
