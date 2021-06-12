@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         No Call Info complete length
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Complete length for the info badge if no call is open
 // @author       KeineAhnung
 // @run-at       document-end
@@ -10,7 +10,11 @@
 // @grant        none
 // ==/UserScript==
 
-window.onload = async function main() {
+$('#infoNoCurrentCalls').on('DOMSubtreeModified', function() {
+    main();
+})
+
+async function main() {
     var infoBadge = document.getElementById('infoNoCurrentCalls')
-    infoBadge.style.width = '120%';
+    infoBadge.style.width = '100%';
 }
