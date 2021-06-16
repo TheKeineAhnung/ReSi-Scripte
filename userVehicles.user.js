@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Vehicles
 // @namespace    http://tampermonkey.net/
-// @version      1.2.0
+// @version      1.2.1
 // @description  Count the Vehicles
 // @author       KeineAhnung
 // @run-at       document-end
@@ -113,7 +113,7 @@ window.onload = async function vehicleStats() {
         tbody.style.width = '100%';
         var round = 0;
         var totalVehicleList = [lf, hlf, tlf, kdow, elw1, elw2, dlk_tmf, rw, mtw, gw_tier, sw, gw_g, gw_mess, gw_a, rtw, lpol, bpol];
-        var exampleIdList = [1, 7, 9, 32, 31, 59, 33, 39, 34, 45, 44, 50, 46, 60, 43, 52, 53];
+        var exampleIdList = [1, 7, 9, 32, 31, 59, 33, 39, 34, 45, 46, 44, 50, 60, 43, 52, 53];
         while (allVehicleTypes > round) {
             var tr = document.createElement('tr');
             var type = document.createElement('td');
