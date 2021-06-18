@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         hideBuildingIcons
+// @name         Hide Building Icons
 // @namespace    http://tampermonkey.net/
 // @version      1.0.0
 // @run-at       document-end
