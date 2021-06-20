@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Building Icons
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @run-at       document-end
 // @description  customize your building Icons
 // @author       KeineAhnung
@@ -28,7 +28,7 @@ window.onload = async function main() {
         if (actualImage.src == 'https://rettungssimulator.online/images/marker/departments/fireDepartment.png' && sessionStorage.getItem('Feuerwache') != 'null') {
             actualImage.src = sessionStorage.getItem('Feuerwache');
             actualImage.style.width = "auto";
-            actualImage.style.style.height = "auto";
+            actualImage.style.height = "auto";
         } else if (actualImage.src == 'https://rettungssimulator.online/images/marker/departments/fireSchool.png' && sessionStorage.getItem('Feuerwehrschule') != 'null') {
             actualImage.src = sessionStorage.getItem('Feuerwehrschule');
             actualImage.style.width = "auto";
