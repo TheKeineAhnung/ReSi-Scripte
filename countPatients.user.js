@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Patients
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @run-at       document-end
 // @description  Shows all patients in the hospitals and the hospital capacity
 // @author       KeineAhnung
@@ -35,8 +35,8 @@ async function main() {
             localStorage.setItem('totalPatientSlots', 0)
             var allBuildings = r;
             for (actualBuilding in allBuildings) {
-                if (allBuildings[actualBuilding].buildingType == "4") {
-                    var totalPatientSlotSet = parseInt(localStorage.getItem('totalPatientSlots')) + r[actualBuilding].level + 10 - 1;
+                if (allBuildings[actualBuilding].buildingType == '4') {
+                    var totalPatientSlotSet = parseInt(localStorage.getItem('totalPatientSlots')) + r[actualBuilding].level + 9;
                     localStorage.setItem('totalPatientSlots', totalPatientSlotSet);
                 }
             }
@@ -70,6 +70,4 @@ async function updatePanel() {
     areaTotal.innerText = localStorage.getItem('totalPatientSlots')
 }
 
-window.onload = async function loadFirst() {
-    main();
-} 
+main();
