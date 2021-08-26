@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide Building Icons
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.1.0
 // @run-at       document-end
 // @description  Hides the building Icons on the map
 // @author       KeineAhnung
@@ -21,7 +21,7 @@ window.onload = async function main() {
     "https://rettungssimulator.online/images/marker/departments/policeDepartment.png",
     "https://rettungssimulator.online/images/marker/departments/policeSchool.png",
   ];
-  var images = document.getElementsByTagName("img");
+  var images = document.querySelectorAll("img.leaflet-marker-icon");
   for (var i in images) {
     var actualImage = images[i];
     for (var actualIcon in iconsToRemove) {
@@ -29,8 +29,7 @@ window.onload = async function main() {
         break;
       }
       if (actualImage.src == iconsToRemove[actualIcon]) {
-        actualImage.src =
-          "https://raw.githubusercontent.com/TheKeineAhnung/ReSi-Scripte/main/img/transparentPixel.png";
+        actualImage.style.display = "none";
         break;
       }
     }
