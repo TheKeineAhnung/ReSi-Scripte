@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Mission Icons
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @run-at       document-end
 // @description  customize your mission Icons
 // @author       KeineAhnung
@@ -76,6 +76,6 @@ socket.on("newMission", (missionObject) => {
   replaceIcons(missionObject.icon);
 });
 
-window.onload = function load() {
+window.addEventListener("load", function () {
   replaceIcons();
-};
+});
