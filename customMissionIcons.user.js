@@ -13,7 +13,7 @@
 // @grant        none
 // ==/UserScript==
 
-//1 = keine Fahrzeuge alamiert
+//1 = keine Fahrzeuge alamiert/fehlende Fahrzeuge
 //2 = Auf anfahrt
 //3 = wird bearbeitet
 
