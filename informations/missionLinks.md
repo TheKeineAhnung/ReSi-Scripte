@@ -57,8 +57,8 @@
 
 12.
 
-- name: electricalDevice
-- icon: https://rettungssimulator.online/images/marker/missions/electricalDevice_0.png
+- name: electricalDeviceFire
+- icon: https://rettungssimulator.online/images/marker/missions/electricalDeviceFire_0.png
 
 13.
 
