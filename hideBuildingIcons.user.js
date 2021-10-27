@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide Building Icons
 // @namespace    http://tampermonkey.net/
-// @version      1.1.0
+// @version      1.1.1
 // @run-at       document-end
 // @description  Hides the building Icons on the map
 // @author       KeineAhnung
@@ -11,7 +11,7 @@
 // @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/hideBuildingIcons.user.js
 // ==/UserScript==
 
-window.onload = async function main() {
+async function hideBuildingIcons() {
   var iconsToRemove = [
     "https://rettungssimulator.online/images/marker/departments/hospital.png",
     "https://rettungssimulator.online/images/marker/departments/emsDepartment.png",
@@ -35,4 +35,6 @@ window.onload = async function main() {
     }
     i++;
   }
-};
+}
+
+window.addEventListener("load", hideBuildingIcons);
