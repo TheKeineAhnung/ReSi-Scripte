@@ -40,7 +40,6 @@ function replaceIcons(icon = "fire") {
       `img[src='images/marker/missions/${config_parse[i]["name"]}_3.png']`
     );
     for (var e in oneMap) {
-      console.log(oneMap[e].src);
       if (
         oneMap[e].src ===
         `https://rettungssimulator.online/images/marker/missions/${icon}_1.png`
@@ -72,7 +71,6 @@ socket.on("missionStatus", (missionStatusObject) => {
 });
 
 socket.on("newMission", (missionObject) => {
-  console.log(missionObject.icon);
   replaceIcons(missionObject.icon);
 });
 
