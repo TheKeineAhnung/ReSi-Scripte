@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Show Mission Time
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Show mission time in mission list
 // @author       KeineAhnung
 // @run-at       document-end
@@ -25,7 +25,8 @@ async function setIds(missionStatusObject, socketType) {
     if (
       e.getAttribute("frame-url") ===
         `mission/${missionStatusObject.userMissionID}` &&
-      socketType === "missionStatus"
+      socketType === "missionStatus" &&
+      missionStatusObject.userMissionStatus === 3
     ) {
       if (!ids.includes(missionStatusObject.userMissionID)) {
         ids.push(missionStatusObject.userMissionID);
@@ -57,7 +58,7 @@ async function setIds(missionStatusObject, socketType) {
       console.log(remainingTimeDisplay);
 
       if (container.querySelector(".mission-time") === null) {
-        container.innerHTML += "<div class='mission-time'></div>";
+        container.innerHTML += `<div class='mission-time id-${missionStatusObject.userMissionID}'></div>`;
       }
       if (missionStatusObject.userMissionFinishTime !== undefined) {
         container.querySelector(
@@ -71,6 +72,28 @@ async function setIds(missionStatusObject, socketType) {
         ids.splice(index, 1);
       }
     }
+    var idContainer = document.querySelector(
+      `.id-${missionStatusObject.userMissionID}`
+    );
+    if (idContainer.classList.contains("mission-time")) {
+      if (
+        missionStatusObject.userMissionStatus === 2 ||
+        missionStatusObject.userMissionStatus === 1
+      ) {
+        var timeContainer = document.querySelector(
+          `.${missionStatusObject.userMissionID}`
+        );
+        timeContainer.classList.replace("mission-time", "mission-time-paused");
+      }
+    }
+    if (idContainer.classList.contains("mission-time-paused")) {
+      if (missionStatusObject.userMissionStatus === 3) {
+        var timeContainer = document.querySelector(
+          `.${missionStatusObject.userMissionID}`
+        );
+        timeContainer.classList.replace("mission-time-paused", "mission-time");
+      }
+    }
   });
 }
 
@@ -80,8 +103,10 @@ function refreshIds() {
     var time = String(e.innerText);
     var minutes = time.split(":")[0];
     var seconds = time.split(":")[1];
-    if (Number(minutes) < 0 && Number(seconds) < 0) {
+    if (!time.indexOf(":") > 1 || minutes === "NaN" || seconds === "NaN") {
       e.innerHTML = "0:00";
+      console.log("noinclude");
+      console.log(time.indexOf(":"));
     } else if (e.innerText === "0:00") {
     } else {
       var minutesInSeconds = Math.floor(Number(minutes) * 60);
