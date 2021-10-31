@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Show Mission Time
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
+// @version      1.0.3
 // @description  Show mission time in mission list
 // @author       KeineAhnung
 // @run-at       document-end
@@ -70,26 +70,38 @@ async function setIds(missionStatusObject, socketType) {
         ids.splice(index, 1);
       }
     }
-    var idContainer = document.querySelector(
-      `.id-${missionStatusObject.userMissionID}`
-    );
-    if (idContainer.classList.contains("mission-time")) {
-      if (
-        missionStatusObject.userMissionStatus === 2 ||
-        missionStatusObject.userMissionStatus === 1
-      ) {
-        var timeContainer = document.querySelector(
-          `.${missionStatusObject.userMissionID}`
-        );
-        timeContainer.classList.replace("mission-time", "mission-time-paused");
-      }
+    try {
+      var idContainer = document.querySelector(
+        `.id-${missionStatusObject.userMissionID}`
+      );
+    } catch {
+      var idContainer = undefined;
     }
-    if (idContainer.classList.contains("mission-time-paused")) {
-      if (missionStatusObject.userMissionStatus === 3) {
-        var timeContainer = document.querySelector(
-          `.${missionStatusObject.userMissionID}`
-        );
-        timeContainer.classList.replace("mission-time-paused", "mission-time");
+    if (idContainer !== undefined && idContainer !== null) {
+      if (idContainer.classList.contains("mission-time")) {
+        if (
+          missionStatusObject.userMissionStatus === 2 ||
+          missionStatusObject.userMissionStatus === 1
+        ) {
+          var timeContainer = document.querySelector(
+            `.${missionStatusObject.userMissionID}`
+          );
+          timeContainer.classList.replace(
+            "mission-time",
+            "mission-time-paused"
+          );
+        }
+      }
+      if (idContainer.classList.contains("mission-time-paused")) {
+        if (missionStatusObject.userMissionStatus === 3) {
+          var timeContainer = document.querySelector(
+            `.${missionStatusObject.userMissionID}`
+          );
+          timeContainer.classList.replace(
+            "mission-time-paused",
+            "mission-time"
+          );
+        }
       }
     }
   });
