@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Mission Icons
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @run-at       document-end
 // @description  customize your mission Icons
 // @author       KeineAhnung
