@@ -224,3 +224,43 @@
 
 - name: truckInDitch
 - icon: https://rettungssimulator.online/images/marker/missions/truckInDitch_0.png
+
+46.
+
+- name: flashlight
+- icon: https://rettungssimulator.online/images/marker/missions/flashlight_0.png
+
+47.
+
+- name: fight
+- icon: https://rettungssimulator.online/images/marker/missions/fight_0.png
+
+48.
+
+- name: freightTrain
+- icon: https://rettungssimulator.online/images/marker/missions/freightTrain_0.png
+
+49.
+
+- name: hydrant
+- icon: https://rettungssimulator.online/images/marker/missions/hydrant_0.png
+
+50.
+
+- name: windmillFire
+- icon: https://rettungssimulator.online/images/marker/missions/windmillFire_0.png
+
+51.
+
+- name: containerFire
+- icon: https://rettungssimulator.online/images/marker/missions/containerFire_0.png
+
+52.
+
+- name: luggage
+- icon: https://rettungssimulator.online/images/marker/missions/luggage_0.png
+
+53.
+
+- name: planeCrash
+- icon: https://rettungssimulator.online/images/marker/missions/planeCrash_0.png
