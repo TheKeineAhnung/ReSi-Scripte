@@ -10,7 +10,6 @@ def update():
         exit(1)
     json = parse_json(resp)
     icon_link_list = filter_json(json)
-    print(icon_link_list)
     final_content += title + "\n \n"
     for i in icon_link_list:
         final_content += str(start_count) + ". \n"
