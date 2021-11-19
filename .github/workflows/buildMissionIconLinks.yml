@@ -1,4 +1,4 @@
-name: Build Light Theme
+name: Build Mission Icon Links
 
 on:
   schedule:
