@@ -41,20 +41,20 @@
 - icon: https://rettungssimulator.online/images/marker/missions/catOnTree_0.png
 
 11. 
+- name: trafficBarrier
+- icon: https://rettungssimulator.online/images/marker/missions/trafficBarrier_0.png
+
+12. 
 - name: luggage
 - icon: https://rettungssimulator.online/images/marker/missions/luggage_0.png
 
-12. 
+13. 
 - name: handcuffs
 - icon: https://rettungssimulator.online/images/marker/missions/handcuffs_0.png
 
-13. 
+14. 
 - name: fallingTree
 - icon: https://rettungssimulator.online/images/marker/missions/fallingTree_0.png
-
-14. 
-- name: trafficBarrier
-- icon: https://rettungssimulator.online/images/marker/missions/trafficBarrier_0.png
 
 15. 
 - name: motorcycleFire
