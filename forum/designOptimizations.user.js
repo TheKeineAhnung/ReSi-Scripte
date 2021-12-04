@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         designOptimizations
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @run-at       document-end
 // @description  Optimize the design of the forum
 // @author       KeineAhnung
@@ -13,10 +13,9 @@
 // ==/UserScript==
 
 function removeBlueLineOfCategoryHeaders() {
-  let headers = document.querySelectorAll("li.wbbCategory header");
-  headers.forEach((header) => {
-    header.style.color = "#a11116";
-  });
+  let style = document.createElement("style");
+  style.innerText = `li.wbbCategory header{color: #a11116 !important;}`;
+  document.head.appendChild(style);
 }
 
 function pageHeaderBackgroundImage(
