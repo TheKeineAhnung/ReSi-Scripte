@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Alarm fax
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @run-at       document-end
 // @description  Add a alarm fax box to the mission page
 // @author       KeineAhnung
-// @match        https://rettungssimulator.online/mission/*
+// @match        https://rettungssimulator.online/*
 // @icon         https://www.google.com/s2/favicons?domain=rettungssimulator.online
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/alarmfax.user.js
 // @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/alarmfax.user.js
@@ -124,10 +124,13 @@ function card() {
   innerHTMLContent += `<tr><th>Funkrufname</th><th>Wache</th><th>Alarmzeit</th></tr>`;
   let userMissionId = window.location.href.split("/");
   userMissionId = userMissionId[userMissionId.length - 1];
+
   for (var e in elements[userMissionId]) {
     innerHTMLContent += `<tr><td>${elements[userMissionId][e].vehicleName}</td><td>${elements[userMissionId][e].userBuildingName}</td><td>${elements[userMissionId][e].alarmTime}</td></tr>`;
   }
-  alarmfaxCardBody.innerHTML = innerHTMLContent;
+  if (window.location.href.includes("/mission")) {
+    alarmfaxCardBody.innerHTML = innerHTMLContent;
+  }
 }
 
 socket.on("vehicleFMS", (vehicleFMSObject) => {
