@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alarm fax
 // @namespace    http://tampermonkey.net/
-// @version      1.1.0
+// @version      1.1.1
 // @run-at       document-end
 // @description  Add a alarm fax box to the mission page
 // @author       KeineAhnung
@@ -21,7 +21,18 @@ if (!localStorage.getItem("alarmfaxInfoMissionStatus")) {
 }
 
 if (!sessionStorage.getItem("alarmfaxInfoBuildingData")) {
-  sessionStorage.setItem("alarmfaxInfoBuildingData", JSON.stringify({}));
+  $.ajax({
+    url: `/api/userBuildings`,
+    dataType: "json",
+    type: "GET",
+    success: function (r) {
+      data = {};
+      for (var e in r) {
+        data[r[e].userBuildingID] = r[e].userBuildingName;
+      }
+      sessionStorage.setItem("alarmfaxInfoBuildingData", JSON.stringify(data));
+    },
+  });
 }
 
 async function storeData(vehicleFMSObject) {
@@ -36,21 +47,6 @@ async function storeData(vehicleFMSObject) {
       userBuildingId
     ]
   ) {
-    await $.ajax({
-      url: `/api/userBuildings?id=${userBuildingId}`,
-      dataType: "json",
-      type: "GET",
-      success: function (r) {
-        let data = JSON.parse(
-          sessionStorage.getItem("alarmfaxInfoBuildingData")
-        );
-        data[userBuildingId] = r.userBuildingName;
-        sessionStorage.setItem(
-          "alarmfaxInfoBuildingData",
-          JSON.stringify(data)
-        );
-      },
-    });
   }
 
   var userBuildingName = await JSON.parse(
