@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alarm fax
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @run-at       document-end
 // @description  Add a alarm fax box to the mission page
 // @author       KeineAhnung
@@ -20,7 +20,7 @@ if (!localStorage.getItem("alarmfaxInfoMissionStatus")) {
   localStorage.setItem("alarmfaxInfoMissionStatus", JSON.stringify({}));
 }
 
-async function storeData(vehicleFMSObject) {
+function storeData(vehicleFMSObject) {
   // store important information
   var userMissionId = vehicleFMSObject.userMissionID;
   var vehicleId = vehicleFMSObject.userVehicleID;
@@ -33,29 +33,20 @@ async function storeData(vehicleFMSObject) {
     type: "GET",
     success: function (r) {
       var userBuildingId = r.userBuildingID;
-      getBuildingName(userBuildingId);
-      setTimeout(function () {
-        var userBuildingName = sessionStorage.getItem("userBuildingName");
-        var date = new Date();
-        var alarmTime =
-          date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-        var localStorageObject = JSON.parse(
-          localStorage.getItem("alarmfaxInfo")
-        );
-        if (localStorageObject[userMissionId] == undefined) {
-          localStorageObject[userMissionId] = {};
-          localStorageObject[userMissionId][vehicleId] = {
-            userMissionId: userMissionId,
-            vehicleName: vehicleName,
-            alarmTime: alarmTime,
-            userBuildingName: userBuildingName,
-          };
-          localStorage.setItem(
-            "alarmfaxInfo",
-            JSON.stringify(localStorageObject)
+      $.ajax({
+        url: `/api/userBuildings?id=${userBuildingId}`,
+        dataType: "json",
+        type: "GET",
+        success: function (r) {
+          var userBuildingName = r.userBuildingName;
+          var date = new Date();
+          var alarmTime =
+            date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+          var localStorageObject = JSON.parse(
+            localStorage.getItem("alarmfaxInfo")
           );
-        } else {
-          if (localStorageObject[userMissionId][vehicleId] == undefined) {
+          if (localStorageObject[userMissionId] == undefined) {
+            localStorageObject[userMissionId] = {};
             localStorageObject[userMissionId][vehicleId] = {
               userMissionId: userMissionId,
               vehicleName: vehicleName,
@@ -66,23 +57,23 @@ async function storeData(vehicleFMSObject) {
               "alarmfaxInfo",
               JSON.stringify(localStorageObject)
             );
+          } else {
+            if (localStorageObject[userMissionId][vehicleId] == undefined) {
+              localStorageObject[userMissionId][vehicleId] = {
+                userMissionId: userMissionId,
+                vehicleName: vehicleName,
+                alarmTime: alarmTime,
+                userBuildingName: userBuildingName,
+              };
+              localStorage.setItem(
+                "alarmfaxInfo",
+                JSON.stringify(localStorageObject)
+              );
+            }
           }
-        }
-        card();
-      }, 200);
-    },
-  });
-}
-
-function getBuildingName(userBuildingId) {
-  // get the station name of the vehicle via userBuildings API and return userBuildingName
-  $.ajax({
-    url: `/api/userBuildings?id=${userBuildingId}`,
-    dataType: "json",
-    type: "GET",
-    success: function (r) {
-      var userBuildingName = r.userBuildingName;
-      sessionStorage.setItem("userBuildingName", userBuildingName);
+          card();
+        },
+      });
     },
   });
 }
