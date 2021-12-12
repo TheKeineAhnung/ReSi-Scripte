@@ -42,13 +42,6 @@ async function storeData(vehicleFMSObject) {
   var vehicleName = vehicleFMSObject.userVehicleName;
   var userBuildingId = vehicleFMSObject.userDepartmentID;
 
-  if (
-    !JSON.parse(sessionStorage.getItem("alarmfaxInfoBuildingData"))[
-      userBuildingId
-    ]
-  ) {
-  }
-
   var userBuildingName = await JSON.parse(
     sessionStorage.getItem("alarmfaxInfoBuildingData")
   )[userBuildingId];
