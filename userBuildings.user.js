@@ -68,7 +68,7 @@ async function buildingStats() {
   for (let elem in buildings["userBuildings"]) {
     buildingCount[buildings["userBuildings"][elem].buildingType].count++;
   }
-  console.log(buildingCount);
+
   var parentDiv = document.querySelectorAll(
     "body div.iframe-content div.card-collapse"
   );
