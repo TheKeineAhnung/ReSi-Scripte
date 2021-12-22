@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      1.3.1
+// @version      2.0.0
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -11,54 +11,70 @@
 // @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/userBuildings.user.js
 // ==/UserScript==
 
-window.onload = async function buildingStats() {
-  let style = document.createElement("style");
-  style.innerText =
-    ".card-headline.card-headline-danger{background-color:#DB1111;color:#fff}.card";
-  document.head.appendChild(style);
-  var firestation = 0;
-  var firebrigadeschool = 0;
-  var ambulancestation = 0;
-  var hospital = 0;
-  var policestationLP = 0;
-  var policestationBP = 0;
-  var policeschool = 0;
-  var controlRoom = 0;
-  var round = 0;
-  var allBuildingTypes = 8;
+if (
+  localStorage.getItem("buildingCountGameversion") <
+    document.querySelector("li[data-tooltip='Aktuelle Spielversion']") ||
+  localStorage.getItem("buildingCountGameversion") == null
+) {
+  var gameVersionLink = document.querySelector("link[rel]");
+  var search = "?" + gameVersionLink.href.split("?")[1];
+  var queryString = new URLSearchParams(search);
+  var gameVersion = queryString.get("v");
+  localStorage.setItem("buildingCountGameversion", gameVersion);
+  storeBuildingTypes();
+}
 
-  await $.ajax({
-    url: "/api/userBuildings/",
-    dataType: "json",
-    type: "GET",
+async function storeBuildingTypes() {
+  const builingTypes = await (await fetch("/api/buildings")).json();
+  localStorage.setItem(
+    "buildingCountBuildingCategories",
+    JSON.stringify(builingTypes)
+  );
+}
 
-    success: function (r) {
-      for (allBuildings in r) {
-        if (r[round].buildingType == 1) {
-          firestation++;
-        } else if (r[round].buildingType == 2) {
-          firebrigadeschool++;
-        } else if (r[round].buildingType == 3) {
-          ambulancestation++;
-        } else if (r[round].buildingType == 4) {
-          hospital++;
-        } else if (r[round].buildingType == 5) {
-          policestationLP++;
-        } else if (r[round].buildingType == 6) {
-          policestationBP++;
-        } else if (r[round].buildingType == 7) {
-          policeschool++;
-        } else if (r[round].buildingType == 8) {
-          controlRoom++;
-        }
-        round++;
-      }
-    },
-  });
+if (
+  localStorage.getItem("buildingCountBuildings") == null ||
+  Number(JSON.parse(localStorage.getItem("buildingCountBuildings")).update) <
+    new Date().getTime() - 86400
+) {
+  buildingCount();
+}
 
-  var parentDiv = document.getElementsByClassName("card-collapse");
-  parentDiv0 = parentDiv[0].parentNode;
-  parentDiv1 = parentDiv[1];
+async function buildingCount() {
+  const buildings = await (await fetch("/api/userBuildings")).json();
+  let object = {
+    userBuildings: buildings,
+    update: new Date().getTime(),
+  };
+  localStorage.setItem("buildingCountBuildings", JSON.stringify(object));
+}
+
+async function buildingStats() {
+  const buildings = JSON.parse(localStorage.getItem("buildingCountBuildings"));
+  const buildingCategories = JSON.parse(
+    localStorage.getItem("buildingCountBuildingCategories")
+  );
+
+  let buildingCount = {};
+  for (let elem of buildingCategories) {
+    buildingCount[elem.buildingID] = {
+      buildingName: elem.buildingName,
+      organisation: elem.organisationName,
+      buildingCategory: elem.buildingCategory,
+      count: 0,
+    };
+  }
+
+  for (let elem in buildings["userBuildings"]) {
+    buildingCount[buildings["userBuildings"][elem].buildingType].count++;
+  }
+
+  var parentDiv = document.querySelectorAll(
+    "body div.iframe-content div.card-collapse"
+  );
+
+  var parentDiv0 = parentDiv[0].parentNode;
+  var parentDiv1 = parentDiv[1];
   let showBuildingDiv = document.createElement("div");
   showBuildingDiv.classList.add("card", "card-collapse", "collapsed");
   showBuildingDiv.innerHTML =
@@ -67,28 +83,7 @@ window.onload = async function buildingStats() {
   var thead = document.querySelector("#theadBuildings");
   var tbody = document.createElement("tbody");
   tbody.style.width = "100%";
-  var round = 0;
-  var totalBuildingList = [
-    "Leitstellen",
-    "Feuerwachen",
-    "Feuerwehrschulen",
-    "Rettungswachen",
-    "Krankenhäuser",
-    "Landespolizeiwachen",
-    "Bundespolizeiwachen",
-    "Polizeischulen",
-  ];
-  var buildingCountList = [
-    controlRoom,
-    firestation,
-    firebrigadeschool,
-    ambulancestation,
-    hospital,
-    policestationLP,
-    policestationBP,
-    policeschool,
-  ];
-  while (allBuildingTypes > round) {
+  for (var elem in buildingCount) {
     var tr = document.createElement("tr");
     var type = document.createElement("td");
     type.style.textAlign = "center";
@@ -96,12 +91,22 @@ window.onload = async function buildingStats() {
     var count = document.createElement("td");
     count.style.textAlign = "center";
     count.style.width = "50%";
-    type.innerText = totalBuildingList[round];
-    count.innerText = buildingCountList[round];
+    if (buildingCount[elem].buildingName.endsWith("e")) {
+      type.innerText = buildingCount[elem].buildingName += "n";
+    } else if (buildingCount[elem].buildingName.endsWith("haus")) {
+      type.innerText = buildingCount[elem].buildingName.replace(
+        "haus",
+        "häuser"
+      );
+    } else {
+      type.innerText = buildingCount[elem].buildingName;
+    }
+    count.innerText = buildingCount[elem].count;
     tr.appendChild(type);
     tr.appendChild(count);
     tbody.appendChild(tr);
-    round++;
   }
   thead.appendChild(tbody);
-};
+}
+
+window.addEventListener("load", buildingStats);
