@@ -33,14 +33,14 @@ function pageHeaderBackgroundImage(
 function settingsUiContent() {
   return {
     0: {
-      title: "Blaue Linien entfernen",
-      description: "Remove the blue line of category headers.",
+      title: "Kategorieheader",
+      description: "Entfernt die blauen Linien der Kategorieheader.",
       params: [null],
       func: "removeBlueLineOfCategoryHeaders",
     },
     1: {
-      title: "Hintergrundbild des Seitenheaders ändern",
-      description: "Change the background image of the page header.",
+      title: "Seitenheader",
+      description: "Ändert das Hintergrundbild des Seitenheaders.",
       params: ["imageUrl"],
       func: "pageHeaderBackgroundImage",
     },
@@ -197,8 +197,8 @@ function addSettingsUiContentTemplateCard(title, desc, params, checked, id) {
     " ",
     "-"
   )}" type="checkbox" ${checked}></span></header>
-      <div class="designSettingsCardDescription" style="padding: 0.25rem 2rem;">${desc}</div>
-      <div class="params" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+      <div class="designSettingsCardDescription" style="padding: 0.25rem 1rem;">${desc}</div>
+      <div class="params" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 0.25rem;">
         ${paramHTML}
       </div>
     </div>
