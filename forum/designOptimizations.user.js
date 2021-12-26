@@ -119,6 +119,7 @@ function settingsUi() {
   settingsMenu.style.position = "absolute";
   settingsMenu.style.width = "95%";
   settingsMenu.style.height = "auto";
+  settingsMenu.style.display = "none";
   settingsMenu.setAttribute("aria-hidden", "true");
   settingsMenu.classList.add("dialogContainer");
   settingsMenu.setAttribute("role", "dialog");
@@ -140,7 +141,10 @@ function settingsUi() {
       <button id="designOptConfigSafe" type="submit" style="margin-top: 1rem;">Speichern</button>
     </div>
     `;
-  body.appendChild(settingsMenu);
+  let area = document.querySelector(".dialogOverlay");
+  area.appendChild(settingsMenu);
+  let settingsDialog = document.querySelector("#designSettingsMenu");
+  settingsDialog.style.display = "block";
   document
     .querySelector("#designSettingsMenuClose")
     .addEventListener("click", () => {
@@ -207,10 +211,13 @@ function addSettingsUiContentTemplateCard(title, desc, params, checked, id) {
 
 function toggleUiDisplay() {
   let settingsUiElement = document.querySelector("#designSettingsMenu");
+  let dialogOverlay = document.querySelector(".dialogOverlay");
   if (!settingsUiElement.classList.contains("active")) {
+    dialogOverlay.setAttribute("aria-hidden", "false");
     settingsUiElement.setAttribute("aria-hidden", "false");
     settingsUiElement.classList.add("active");
   } else {
+    dialogOverlay.setAttribute("aria-hidden", "true");
     settingsUiElement.setAttribute("aria-hidden", "true");
     settingsUiElement.classList.remove("active");
   }
