@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Building Icons
 // @namespace    http://tampermonkey.net/
-// @version      2.0.0
+// @version      2.0.1
 // @run-at       document-end
 // @description  customize your building Icons
 // @author       KeineAhnung
@@ -17,7 +17,8 @@ sessionStorage.setItem("Feuerwache", "null");
 sessionStorage.setItem("Feuerwehrschule", "null");
 sessionStorage.setItem("Rettungswache", "null");
 sessionStorage.setItem("Krankenhaus", "null");
-sessionStorage.setItem("Polizeiwache", "null");
+sessionStorage.setItem("Landespolizeiwache", "null");
+sessionStorage.setItem("Bundespolizeiwache", "null");
 sessionStorage.setItem("Polizeischule", "null");
 sessionStorage.setItem("Leitstelle", "null");
 sessionStorage.setItem("Rettungsdienstschule", "null");
@@ -41,7 +42,6 @@ function customBuildingIcons() {
     var src = actualImage.src;
     for (var e in buildingData) {
       for (var j in buildingData[e]) {
-        console.log(buildingData[e][j].markerName);
         if (
           src ==
             `https://rettungssimulator.online/images/marker/departments/${buildingData[e][j].markerName}.png` &&
