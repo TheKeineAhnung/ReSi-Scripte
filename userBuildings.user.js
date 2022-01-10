@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      2.0.0
+// @version      2.0.1
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -13,13 +13,14 @@
 
 if (
   localStorage.getItem("buildingCountGameversion") <
-    document.querySelector("li[data-tooltip='Aktuelle Spielversion']") ||
+    new URLSearchParams(
+      "?" + document.querySelector("link[rel]").href.split("?")[1]
+    ).get("v") ||
   localStorage.getItem("buildingCountGameversion") == null
 ) {
-  var gameVersionLink = document.querySelector("link[rel]");
-  var search = "?" + gameVersionLink.href.split("?")[1];
-  var queryString = new URLSearchParams(search);
-  var gameVersion = queryString.get("v");
+  var gameVersion = new URLSearchParams(
+    "?" + document.querySelector("link[rel]").href.split("?")[1]
+  ).get("v");
   localStorage.setItem("buildingCountGameversion", gameVersion);
   storeBuildingTypes();
 }
