@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      2.0.1
+// @version      2.0.2
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -99,6 +99,8 @@ async function buildingStats() {
         "haus",
         "häuser"
       );
+    } else if (buildingCount[elem].buildingName.endsWith("ort")) {
+      type.innerText = buildingCount[elem].buildingName.replace("ort", "orte");
     } else {
       type.innerText = buildingCount[elem].buildingName;
     }
