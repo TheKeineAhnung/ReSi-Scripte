@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ChatMessageAlertGongBeta
 // @namespace    http://tampermonkey.net/
-// @version      1.1.3
+// @version      1.1.4
 // @description  Alert when new Message is in the Chat
 // @author       KeineAhnung
 // @run-at       document-end
@@ -24,7 +24,7 @@ if (
 
 function chatMessageAlert() {
   const username = JSON.parse(localStorage.aUser).value.userName;
-  var audio = new Audio("https://voca.ro/1jPC1Pp2JEkr");
+  var audio = new Audio("");
   socket.on("associationMessage", (messageObject) => {
     if (messageObject.userName != username) {
       audio.play();
