@@ -36,7 +36,7 @@ async function setIds(missionStatusObject, socketType) {
       );
       var date = new Date();
       var finishTime = new Date(missionStatusObject.userMissionFinishTime);
-      var remainingTime = finishTime.getTimezoneOffset() * 60 * 1000;
+      var remainingTime = finishTime.getTime();
       remainingTime = missionStatusObject.userMissionFinishTime
         .split(" ")
         .pop();
