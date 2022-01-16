@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Show Mission Time
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Show mission time in mission list
 // @author       KeineAhnung
 // @run-at       document-end
@@ -35,7 +35,9 @@ async function setIds(missionStatusObject, socketType) {
         "div.mission-list-text div.mission-list-name"
       );
       var date = new Date();
-      var remainingTime = missionStatusObject.userMissionFinishTime
+      var finishTime = new Date(missionStatusObject.userMissionFinishTime);
+      var remainingTime = finishTime.getTimezoneOffset() * 60 * 1000;
+      remainingTime = missionStatusObject.userMissionFinishTime
         .split(" ")
         .pop();
       remainingTime = remainingTime.split(":");
