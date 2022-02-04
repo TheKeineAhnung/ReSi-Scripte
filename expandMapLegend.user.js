@@ -6,6 +6,8 @@
 // @author       KeineAhnung
 // @match        https://rettungssimulator.online/mapLegend
 // @icon         https://www.google.com/s2/favicons?domain=rettungssimulator.online
+// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/expandMapLegend.user.js
+// @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/expandMapLegend.user.js
 // @grant        none
 // ==/UserScript==
 
