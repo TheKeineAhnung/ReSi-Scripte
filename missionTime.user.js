@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Show Mission Time
 // @namespace    http://tampermonkey.net/
-// @version      1.0.5
+// @version      1.0.6
 // @description  Show mission time in mission list
 // @author       KeineAhnung
 // @run-at       document-end
@@ -34,6 +34,7 @@ async function setIds(missionStatusObject, socketType) {
       var container = e.querySelector(
         "div.mission-list-text div.mission-list-name"
       );
+      container.style.display = "flex";
       var date = new Date();
       var finishTime = new Date(missionStatusObject.userMissionFinishTime);
       remainingTime = String(finishTime).split(" ");
@@ -55,7 +56,7 @@ async function setIds(missionStatusObject, socketType) {
         (remainingTimeUnix - finishSeconds) / 60 + `:${finishSeconds}`
       );
       if (container.querySelector(".mission-time") === null) {
-        container.innerHTML += `<div class='mission-time id-${missionStatusObject.userMissionID}'></div>`;
+        container.innerHTML += `<div class='mission-time id-${missionStatusObject.userMissionID}' style="margin-left: 5px"></div>`;
       }
       if (missionStatusObject.userMissionFinishTime !== undefined) {
         container.querySelector(
