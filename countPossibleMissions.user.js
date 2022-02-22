@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Possible mission Count
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Count possible missions in missionoverview
-// @author       You
+// @author       KeineAhnung
 // @match        https://rettungssimulator.online/missionOverview
 // @icon         https://www.google.com/s2/favicons?domain=rettungssimulator.online
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/countPossibleMissions.user.js
