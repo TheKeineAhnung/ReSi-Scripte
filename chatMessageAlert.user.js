@@ -2,7 +2,7 @@
 // @name         ChatMessageAlertGong
 // @namespace    http://tampermonkey.net/
 // @version      1.1.6
-// @description  Alert when a new Message is in the Chat (outdated)
+// @description  Alert when a new message is in the chat (outdated)
 // @author       KeineAhnung
 // @run-at       document-end
 // @include      https://rettungssimulator.online/
