@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Hide Building Icons
+// @name         Hide building icons
 // @namespace    http://tampermonkey.net/
 // @version      1.1.1
 // @run-at       document-end
-// @description  Hides the building Icons on the map
+// @description  Hides the building icons on the map
 // @author       KeineAhnung
 // @match        https://rettungssimulator.online/
 // @icon         https://www.google.com/s2/favicons?domain=rettungssimulator.online
