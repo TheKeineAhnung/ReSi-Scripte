@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Auto Building Collapse
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Auto collapse buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -12,7 +12,21 @@
 // ==/UserScript==
 
 async function autoCollapseBuildings() {
-  var collapseBuildingTypes = [1, 2, 3, 4, 5, 6, 7, 8];
+  let collapseBuildingTypes;
+  if (localStorage.getItem("autoCollapseBuildingsBuildingTypes")) {
+    collapseBuildingTypes = JSON.parse(
+      localStorage.getItem("autoCollapseBuildingsBuildingTypes")
+    );
+  } else {
+    localStorage.setItem(
+      "autoCollapseBuildingsBuildingTypes",
+      JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    );
+    collapseBuildingTypes = JSON.parse(
+      localStorage.getItem("autoCollapseBuildingsBuildingTypes")
+    );
+  }
+  console.log(collapseBuildingTypes);
   var cards = document
     .getElementById("departments")
     .getElementsByClassName("card");
