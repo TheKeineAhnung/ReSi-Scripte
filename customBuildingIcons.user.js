@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         Custom Building Icons
+// @name         Custom building icons
 // @namespace    http://tampermonkey.net/
 // @version      2.0.1
 // @run-at       document-end
-// @description  customize your building Icons
+// @description  Customize your building Icons
 // @author       KeineAhnung
 // @include      https://rettungssimulator.online
 // @include      https://rettungssimulator.online/*
