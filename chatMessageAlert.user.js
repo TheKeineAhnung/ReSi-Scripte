@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         ChatMessageAlertGongBeta
 // @namespace    http://tampermonkey.net/
-// @version      1.1.4
+// @version      1.1.5
 // @description  Alert when new Message is in the Chat
 // @author       KeineAhnung
 // @run-at       document-end
-// @include      https://beta.rettungssimulator.online/
+// @include      https://rettungssimulator.online/
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/chatMessageAlert.user.js
 // @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/chatMessageAlert.user.js
 // ==/UserScript==
