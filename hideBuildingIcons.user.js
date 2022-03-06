@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide building icons
 // @namespace    http://tampermonkey.net/
-// @version      1.1.1
+// @version      1.1.2
 // @run-at       document-end
 // @description  Hides the building icons on the map
 // @author       KeineAhnung
@@ -12,15 +12,12 @@
 // ==/UserScript==
 
 async function hideBuildingIcons() {
-  var iconsToRemove = [
-    "https://rettungssimulator.online/images/marker/departments/hospital.png",
-    "https://rettungssimulator.online/images/marker/departments/emsDepartment.png",
-    "https://rettungssimulator.online/images/marker/departments/controlCenter.png",
-    "https://rettungssimulator.online/images/marker/departments/fireDepartment.png",
-    "https://rettungssimulator.online/images/marker/departments/fireSchool.png",
-    "https://rettungssimulator.online/images/marker/departments/policeDepartment.png",
-    "https://rettungssimulator.online/images/marker/departments/policeSchool.png",
-  ];
+  var iconsToRemove;
+  if (localStorage.getItem("hideBuildingIconsConfig")) {
+    iconsToRemove = JSON.parse(localStorage.getItem("hideBuildingIconsConfig"));
+  } else {
+    iconsToRemove = [];
+  }
   var images = document.querySelectorAll("img.leaflet-marker-icon");
   for (var i in images) {
     var actualImage = images[i];
