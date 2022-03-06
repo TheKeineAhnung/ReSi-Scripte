@@ -26,7 +26,6 @@ async function autoCollapseBuildings() {
       localStorage.getItem("autoCollapseBuildingsBuildingTypes")
     );
   }
-  console.log(collapseBuildingTypes);
   var cards = document
     .getElementById("departments")
     .getElementsByClassName("card");
