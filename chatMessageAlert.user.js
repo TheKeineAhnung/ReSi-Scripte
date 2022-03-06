@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ChatMessageAlertGongBeta
 // @namespace    http://tampermonkey.net/
-// @version      1.1.5
-// @description  Alert when new Message is in the Chat
+// @version      1.1.6
+// @description  Alert when a new Message is in the Chat (outdated)
 // @author       KeineAhnung
 // @run-at       document-end
 // @include      https://rettungssimulator.online/
@@ -24,7 +24,13 @@ if (
 
 function chatMessageAlert() {
   const username = JSON.parse(localStorage.aUser).value.userName;
-  var audio = new Audio("");
+  var audio;
+  if (localStorage.getItem("chatMessageAlertAudio")) {
+    audio = new Audio(localStorage.getItem("chatMessageAlertAudio"));
+  } else {
+    localStorage.setItem("chatMessageAlertAudio", "");
+    audio = new Audio(localStorage.getItem("chatMessageAlertAudio"));
+  }
   socket.on("associationMessage", (messageObject) => {
     if (messageObject.userName != username) {
       audio.play();
