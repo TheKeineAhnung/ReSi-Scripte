@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Possible mission Count
+// @name         Possible missions count
 // @namespace    http://tampermonkey.net/
 // @version      1.0.1
 // @description  Count possible missions in missionoverview
