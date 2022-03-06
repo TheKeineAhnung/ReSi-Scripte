@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Custom building icons
 // @namespace    http://tampermonkey.net/
-// @version      2.0.1
+// @version      2.1.0
 // @run-at       document-end
-// @description  Customize your building Icons
+// @description  Customize your building icons
 // @author       KeineAhnung
 // @include      https://rettungssimulator.online
 // @include      https://rettungssimulator.online/*
@@ -13,15 +13,7 @@
 // @grant        none
 // ==/UserScript==
 
-sessionStorage.setItem("Feuerwache", "null");
-sessionStorage.setItem("Feuerwehrschule", "null");
-sessionStorage.setItem("Rettungswache", "null");
-sessionStorage.setItem("Krankenhaus", "null");
-sessionStorage.setItem("Landespolizeiwache", "null");
-sessionStorage.setItem("Bundespolizeiwache", "null");
-sessionStorage.setItem("Polizeischule", "null");
-sessionStorage.setItem("Leitstelle", "null");
-sessionStorage.setItem("Rettungsdienstschule", "null");
+let config = new Object();
 
 if (sessionStorage.getItem("buildingIconsBuildingData") == null) {
   $.getJSON("/api/buildings").done((data) =>
@@ -30,6 +22,35 @@ if (sessionStorage.getItem("buildingIconsBuildingData") == null) {
       JSON.stringify({ value: data })
     )
   );
+}
+
+config.Feuerwache = "null";
+config.Feuerwehrschule = "null";
+config.Rettungswache = "null";
+config.Krankenhaus = "null";
+config.Landespolizeiwache = "null";
+config.Bundespolizeiwache = "null";
+config.Polizeischule = "null";
+config.Leitstelle = "null";
+config.Rettungsdienstschule = "null";
+config.Notarztstandort = "null";
+
+if (localStorage.getItem("customBuildingIconsConfig")) {
+  if (
+    JSON.parse(localStorage.getItem("customBuildingIconsConfig")) !== config
+  ) {
+    for (let e in config) {
+      if (config[e] != "null") {
+        localStorage.setItem(
+          "customBuildingIconsConfig",
+          JSON.stringify(config)
+        );
+        break;
+      }
+    }
+  }
+} else {
+  localStorage.setItem("customBuildingIconsConfig", JSON.stringify(config));
 }
 
 function customBuildingIcons() {
@@ -45,11 +66,9 @@ function customBuildingIcons() {
         if (
           src ==
             `https://rettungssimulator.online/images/marker/departments/${buildingData[e][j].markerName}.png` &&
-          sessionStorage.getItem(buildingData[e][j].buildingName) != "null"
+          config[buildingData[e][j].buildingName] != "null"
         ) {
-          actualImage.src = sessionStorage.getItem(
-            buildingData[e][j].buildingName
-          );
+          actualImage.src = config[buildingData[e][j].buildingName];
           actualImage.style.width = "auto";
           actualImage.style.height = "auto";
         }
