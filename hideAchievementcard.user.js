@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Hide Achievementcard
+// @name         Hide achievementcard
 // @namespace    http://tampermonkey.net/
 // @version      1.0.1
 // @run-at       document-end
