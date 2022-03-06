@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         ReSi Show Mission Time
+// @name         ReSi show mission time
 // @namespace    http://tampermonkey.net/
 // @version      1.0.6
 // @description  Show mission time in mission list
