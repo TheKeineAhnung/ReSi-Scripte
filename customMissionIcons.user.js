@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Mission Icons
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
+// @version      1.1.0
 // @run-at       document-end
 // @description  customize your mission Icons
 // @author       KeineAhnung
@@ -19,14 +19,43 @@
 
 const config = `[
     {
-      "name": "fire",
+      "name": "",
       "1": "",
       "2": "",
       "3": ""
     }
   ]
   `;
-const config_parse = JSON.parse(config);
+
+let config_parse = JSON.parse(config);
+
+function getConfig(config_parse) {
+  if (localStorage.getItem("customMissionIconsConfig")) {
+    if (
+      JSON.parse(localStorage.getItem("customMissionIconsConfig")) !==
+      config_parse
+    ) {
+      for (const item of config_parse) {
+        for (const key in item) {
+          if (config_parse[key] != "") {
+            localStorage.setItem(
+              "customMissionIconsConfig",
+              JSON.stringify(config_parse)
+            );
+            return config_parse;
+          }
+        }
+      }
+    }
+    return JSON.parse(localStorage.getItem("customMissionIconsConfig"));
+  } else {
+    localStorage.setItem(
+      "customMissionIconsConfig",
+      JSON.stringify(config_parse)
+    );
+    return config_parse;
+  }
+}
 
 function replaceIcons(icon = "fire") {
   for (var i in config_parse) {
@@ -75,5 +104,6 @@ socket.on("newMission", (missionObject) => {
 });
 
 window.addEventListener("load", function () {
+  config_parse = getConfig(config_parse);
   replaceIcons();
 });

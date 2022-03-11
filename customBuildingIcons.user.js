@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom building icons
 // @namespace    http://tampermonkey.net/
-// @version      2.1.0
+// @version      2.1.1
 // @run-at       document-end
 // @description  Customize your building icons
 // @author       KeineAhnung
@@ -35,22 +35,26 @@ config.Leitstelle = "null";
 config.Rettungsdienstschule = "null";
 config.Notarztstandort = "null";
 
-if (localStorage.getItem("customBuildingIconsConfig")) {
-  if (
-    JSON.parse(localStorage.getItem("customBuildingIconsConfig")) !== config
-  ) {
-    for (let e in config) {
-      if (config[e] != "null") {
-        localStorage.setItem(
-          "customBuildingIconsConfig",
-          JSON.stringify(config)
-        );
-        break;
+function getConfig(config) {
+  if (localStorage.getItem("customBuildingIconsConfig")) {
+    if (
+      JSON.parse(localStorage.getItem("customBuildingIconsConfig")) !== config
+    ) {
+      for (let e in config) {
+        if (config[e] != "null") {
+          localStorage.setItem(
+            "customBuildingIconsConfig",
+            JSON.stringify(config)
+          );
+          return config;
+        }
       }
+      return JSON.parse(localStorage.getItem("customBuildingIconsConfig"));
     }
+  } else {
+    localStorage.setItem("customBuildingIconsConfig", JSON.stringify(config));
+    return config;
   }
-} else {
-  localStorage.setItem("customBuildingIconsConfig", JSON.stringify(config));
 }
 
 function customBuildingIcons() {
@@ -77,4 +81,7 @@ function customBuildingIcons() {
   }
 }
 
-window.addEventListener("load", customBuildingIcons);
+window.addEventListener("load", () => {
+  config = getConfig(config);
+  customBuildingIcons();
+});
