@@ -44,4 +44,6 @@ async function autoCollapseBuildings() {
   }
 }
 
-window.addEventListener("load", autoCollapseBuildings);
+window.addEventListener("load", () => {
+  autoCollapseBuildings();
+});

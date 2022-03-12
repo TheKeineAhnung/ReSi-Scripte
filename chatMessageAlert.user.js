@@ -45,4 +45,6 @@ function chatMessageAlert() {
   });
 }
 
-window.addEventListener("load", chatMessageAlert);
+window.addEventListener("load", () => {
+  chatMessageAlert();
+});

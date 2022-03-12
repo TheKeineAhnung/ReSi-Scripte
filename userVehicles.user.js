@@ -133,4 +133,6 @@ async function vehicleStats() {
   }
 }
 
-window.addEventListener("load", vehicleStats());
+window.addEventListener("load", () => {
+  vehicleStats();
+});

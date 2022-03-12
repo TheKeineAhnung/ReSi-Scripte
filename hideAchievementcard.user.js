@@ -17,4 +17,6 @@ async function hideAchievementCard() {
   card.style.display = "none";
 }
 
-window.addEventListener("load", hideAchievementCard);
+window.addEventListener("load", () => {
+  hideAchievementCard();
+});

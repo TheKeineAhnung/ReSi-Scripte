@@ -112,4 +112,6 @@ async function buildingStats() {
   thead.appendChild(tbody);
 }
 
-window.addEventListener("load", buildingStats);
+window.addEventListener("load", () => {
+  buildingStats();
+});

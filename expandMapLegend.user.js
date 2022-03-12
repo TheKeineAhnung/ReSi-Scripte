@@ -26,4 +26,6 @@ function addArrows() {
   });
 }
 
-window.addEventListener("load", addArrows);
+window.addEventListener("load", () => {
+  addArrows();
+});

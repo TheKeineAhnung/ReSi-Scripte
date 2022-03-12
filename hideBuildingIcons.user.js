@@ -34,4 +34,6 @@ async function hideBuildingIcons() {
   }
 }
 
-window.addEventListener("load", hideBuildingIcons);
+window.addEventListener("load", () => {
+  hideBuildingIcons();
+});
