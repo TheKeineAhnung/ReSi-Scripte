@@ -9,6 +9,8 @@
 
 - 3: Rettungswache
 - 4: Krankenhaus
+- 9: Rettungsdienstschule
+- 10: Notarztstandort
 
 ## Polizei
 
