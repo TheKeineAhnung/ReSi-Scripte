@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Patients
 // @namespace    http://tampermonkey.net/
-// @version      1.0.2
+// @version      1.0.3
 // @run-at       document-end
 // @description  Shows all patients in the hospitals and the hospital capacity
 // @author       KeineAhnung
@@ -74,11 +74,11 @@ async function showPanel() {
     '<span id="KeineAhnungActual">' +
     localStorage.getItem("allPatients") +
     "</span>" +
-    " von " +
+    " Patient(en) bei " +
     '<span id="KeineAhnungTotal">' +
     localStorage.getItem("totalPatientSlots") +
     "</span>" +
-    " Patienten";
+    " Betten";
   position.appendChild(span);
 }
 
