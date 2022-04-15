@@ -6,8 +6,8 @@
 // @author       KeineAhnung
 // @run-at       document-end
 // @match        https://rettungssimulator.online/*
-// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/showOnlyLatestRadioMessage.user.js
-// @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/showOnlyLatestRadioMessage.user.js
+// @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/deleteNewestFMSAfterTime.user.js
+// @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/deleteNewestFMSAfterTime.user.js
 // ==/UserScript==
 
 function updateField(vehicleFMSObject) {
