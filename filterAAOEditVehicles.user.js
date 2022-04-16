@@ -37,8 +37,6 @@ function removeVehicleOptions() {
   }
 }
 
-removeVehicleOptions();
-
 window.addEventListener("load", () => {
   removeVehicleOptions();
 });
