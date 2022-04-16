@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReSi Count Buildings
 // @namespace    http://tampermonkey.net/
-// @version      2.0.2
+// @version      2.0.3
 // @description  Count the buildings
 // @author       KeineAhnung
 // @run-at       document-end
@@ -79,7 +79,7 @@ async function buildingStats() {
   let showBuildingDiv = document.createElement("div");
   showBuildingDiv.classList.add("card", "card-collapse", "collapsed");
   showBuildingDiv.innerHTML =
-    '<div class="card-headline card-headline-danger">Gebäude <svg class="svg-inline--fa fa-angle-up fa-w-10 card-collapse-toggle pointer right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"></path></svg></div><div class="card-body"><div class="element-container"><table class="striped table-divider" id="theadBuildings"><thead><tr><th style="text-align: center;">Typ</th><th style="text-align: center;">Anzahl</th></tr></thead></table></div></div>';
+    '<div class="card-headline card-headline-danger">Gebäude <i class="fas fa-angle-up card-collapse-toggle pointer right"></i></div><div class="card-body"><div class="element-container"><table class="striped table-divider" id="theadBuildings"><thead><tr><th style="text-align: center;">Typ</th><th style="text-align: center;">Anzahl</th></tr></thead></table></div></div>';
   parentDiv0.insertBefore(showBuildingDiv, parentDiv1);
   var thead = document.querySelector("#theadBuildings");
   var tbody = document.createElement("tbody");

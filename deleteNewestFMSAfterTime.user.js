@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Delete newest FMS after time
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  Delete newest FMS after set time
 // @author       KeineAhnung
 // @run-at       document-end
@@ -36,7 +36,6 @@ function updateField(vehicleFMSObject) {
           `div.radio-vehicle.frame-opener[uservehicleid="${vehicleFMSObject.userVehicleID}"]`
         );
         for (let i = 0; i < elements.length; i++) {
-          console.log(elements[i]);
           elements[i].remove();
         }
       }
