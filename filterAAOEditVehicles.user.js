@@ -14,10 +14,14 @@
 function removeVehicleOptions() {
   let removeVehicleTypes;
   if (localStorage.getItem("removeVehicleOptions")) {
-    removeVehicleTypes = localStorage.getItem("removeVehicleOptions");
+    removeVehicleTypes = JSON.parse(
+      localStorage.getItem("removeVehicleOptions")
+    );
   } else {
     localStorage.setItem("removeVehicleOptions", JSON.stringify([]));
-    removeVehicleTypes = localStorage.getItem("removeVehicleOptions");
+    removeVehicleTypes = JSON.parse(
+      localStorage.getItem("removeVehicleOptions")
+    );
   }
 
   let elements = document.querySelectorAll("select.aao-edit-selcet");
@@ -32,6 +36,8 @@ function removeVehicleOptions() {
     }
   }
 }
+
+removeVehicleOptions();
 
 window.addEventListener("load", () => {
   removeVehicleOptions();
