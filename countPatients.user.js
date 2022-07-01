@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Patients
 // @namespace    http://tampermonkey.net/
-// @version      1.0.3
+// @version      1.0.4
 // @run-at       document-end
 // @description  Shows all patients in the hospitals and the hospital capacity
 // @author       KeineAhnung
@@ -25,8 +25,8 @@ if (
   localStorage.setItem("allPatients", allPatients);
 }
 
-$(".currentpatients").on("DOMSubtreeModified", function () {
-  countPatients();
+document.querySelectorAll(".currentpatients").forEach((e) => {
+  e.addEventListener("DomSubtreeModified", countPatients);
 });
 
 async function countPatients() {
