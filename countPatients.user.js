@@ -1,18 +1,15 @@
 // ==UserScript==
 // @name         Show Patients
 // @namespace    http://tampermonkey.net/
-// @version      1.0.4
+// @version      1.0.5
 // @run-at       document-end
 // @description  Shows all patients in the hospitals and the hospital capacity
 // @author       KeineAhnung
-// @include      https://rettungssimulator.online
-// @include      https://rettungssimulator.online/*
+// @match        https://rettungssimulator.online
 // @updateURL    https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/countPatients.user.js
 // @downloadURL  https://github.com/TheKeineAhnung/ReSi-Scripte/raw/main/countPatients.user.js
 // @grant        none
 // ==/UserScript==
-
-var loop = 0;
 
 if (
   localStorage.getItem("allPatients") != null &&
@@ -26,7 +23,9 @@ if (
 }
 
 document.querySelectorAll(".currentpatients").forEach((e) => {
-  e.addEventListener("DomSubtreeModified", countPatients);
+  e.addEventListener("DOMSubtreeModified", () => {
+    countPatients();
+  });
 });
 
 async function countPatients() {
@@ -57,9 +56,8 @@ async function countPatients() {
         localStorage.setItem("allPatients", actualPatients);
         round++;
       }
-      if (loop == 0) {
+      if (document.querySelector("#patientInformation") === null) {
         showPanel();
-        loop++;
       }
       updatePanel();
     },
@@ -69,8 +67,9 @@ async function countPatients() {
 async function showPanel() {
   var position = document.querySelector(".muenzen_marken");
   var span = document.createElement("span");
+  span.id = "patientInformation";
   span.innerHTML =
-    "| " +
+    " | " +
     '<span id="KeineAhnungActual">' +
     localStorage.getItem("allPatients") +
     "</span>" +
