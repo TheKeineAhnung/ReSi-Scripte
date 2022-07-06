@@ -137,69 +137,77 @@
 - icon: https://rettungssimulator.online/images/marker/missions/eventEaster_0.png
 
 35. 
+- name: climbing
+- icon: https://rettungssimulator.online/images/marker/missions/climbing_0.png
+
+36. 
+- name: crane
+- icon: https://rettungssimulator.online/images/marker/missions/crane_0.png
+
+37. 
 - name: bulkyWasteFire
 - icon: https://rettungssimulator.online/images/marker/missions/bulkyWasteFire_0.png
 
-36. 
+38. 
 - name: deerInFence
 - icon: https://rettungssimulator.online/images/marker/missions/deerInFence_0.png
 
-37. 
+39. 
 - name: electricalDeviceFire
 - icon: https://rettungssimulator.online/images/marker/missions/electricalDeviceFire_0.png
 
-38. 
+40. 
 - name: treeFire
 - icon: https://rettungssimulator.online/images/marker/missions/treeFire_0.png
 
-39. 
+41. 
 - name: truckInDitch
 - icon: https://rettungssimulator.online/images/marker/missions/truckInDitch_0.png
 
-40. 
+42. 
 - name: tankTruckLosesFuel
 - icon: https://rettungssimulator.online/images/marker/missions/tankTruckLosesFuel_0.png
 
-41. 
+43. 
 - name: rat
 - icon: https://rettungssimulator.online/images/marker/missions/rat_0.png
 
-42. 
+44. 
 - name: snake
 - icon: https://rettungssimulator.online/images/marker/missions/snake_0.png
 
-43. 
+45. 
 - name: swan
 - icon: https://rettungssimulator.online/images/marker/missions/swan_0.png
 
-44. 
+46. 
 - name: treeOnStreet
 - icon: https://rettungssimulator.online/images/marker/missions/treeOnStreet_0.png
 
-45. 
+47. 
 - name: fox
 - icon: https://rettungssimulator.online/images/marker/missions/fox_0.png
 
-46. 
+48. 
 - name: elevator
 - icon: https://rettungssimulator.online/images/marker/missions/elevator_0.png
 
-47. 
+49. 
 - name: graffiti
 - icon: https://rettungssimulator.online/images/marker/missions/graffiti_0.png
 
-48. 
+50. 
 - name: demonstration
 - icon: https://rettungssimulator.online/images/marker/missions/demonstration_0.png
 
-49. 
+51. 
 - name: manhole
 - icon: https://rettungssimulator.online/images/marker/missions/manhole_0.png
 
-50. 
+52. 
 - name: paperContainerFire
 - icon: https://rettungssimulator.online/images/marker/missions/paperContainerFire_0.png
 
-51. 
+53. 
 - name: deadAnimal
 - icon: https://rettungssimulator.online/images/marker/missions/deadAnimal_0.png
