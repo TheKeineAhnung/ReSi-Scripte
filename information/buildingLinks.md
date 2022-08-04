@@ -30,9 +30,13 @@
 
 ## Polizei:
 
-### Landes-/Bundespolizeiwache:
+### Landespolizeiwache:
 
-- https://rettungssimulator.online/images/marker/departments/policeDepartment.png
+- https://rettungssimulator.online/images/marker/departments/lpolDepartment.png
+
+### Bundespolizeiwache
+
+- https://rettungssimulator.online/images/marker/departments/bpolDepartment.png
 
 ### Polizeischule:
 
