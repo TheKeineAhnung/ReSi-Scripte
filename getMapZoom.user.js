@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Get map zoom
 // @namespace    http://tampermonkey.net/
-// @version      1.0.1
+// @version      1.0.2
 // @run-at       document-end
 // @description  customize your mission Icons
 // @author       KeineAhnung
@@ -13,7 +13,7 @@ const parentContainer = document.querySelector("div.leaflet-control-zoom");
 const currentZoomLevel = mymap.getZoom();
 const infoElement = document.createElement("a");
 infoElement.href = "#";
-infoElement.id = "currentMapZoomLEvel";
+infoElement.id = "currentMapZoomLevel";
 infoElement.style.cursor = "default";
 infoElement.style.fontWeight = "700";
 infoElement.dataset.tooltip = "Zoomlevel der Karte";
