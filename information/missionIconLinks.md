@@ -157,65 +157,69 @@
 - icon: https://rettungssimulator.online/images/marker/missions/crane_0.png
 
 40. 
+- name: parachute
+- icon: https://rettungssimulator.online/images/marker/missions/parachute_0.png
+
+41. 
 - name: bulkyWasteFire
 - icon: https://rettungssimulator.online/images/marker/missions/bulkyWasteFire_0.png
 
-41. 
+42. 
 - name: electricalDeviceFire
 - icon: https://rettungssimulator.online/images/marker/missions/electricalDeviceFire_0.png
 
-42. 
+43. 
 - name: treeFire
 - icon: https://rettungssimulator.online/images/marker/missions/treeFire_0.png
 
-43. 
+44. 
 - name: truckInDitch
 - icon: https://rettungssimulator.online/images/marker/missions/truckInDitch_0.png
 
-44. 
+45. 
 - name: tankTruckLosesFuel
 - icon: https://rettungssimulator.online/images/marker/missions/tankTruckLosesFuel_0.png
 
-45. 
+46. 
 - name: rat
 - icon: https://rettungssimulator.online/images/marker/missions/rat_0.png
 
-46. 
+47. 
 - name: snake
 - icon: https://rettungssimulator.online/images/marker/missions/snake_0.png
 
-47. 
+48. 
 - name: swan
 - icon: https://rettungssimulator.online/images/marker/missions/swan_0.png
 
-48. 
+49. 
 - name: treeOnStreet
 - icon: https://rettungssimulator.online/images/marker/missions/treeOnStreet_0.png
 
-49. 
+50. 
 - name: fox
 - icon: https://rettungssimulator.online/images/marker/missions/fox_0.png
 
-50. 
+51. 
 - name: elevator
 - icon: https://rettungssimulator.online/images/marker/missions/elevator_0.png
 
-51. 
+52. 
 - name: graffiti
 - icon: https://rettungssimulator.online/images/marker/missions/graffiti_0.png
 
-52. 
+53. 
 - name: demonstration
 - icon: https://rettungssimulator.online/images/marker/missions/demonstration_0.png
 
-53. 
+54. 
 - name: manhole
 - icon: https://rettungssimulator.online/images/marker/missions/manhole_0.png
 
-54. 
+55. 
 - name: paperContainerFire
 - icon: https://rettungssimulator.online/images/marker/missions/paperContainerFire_0.png
 
-55. 
+56. 
 - name: deadAnimal
 - icon: https://rettungssimulator.online/images/marker/missions/deadAnimal_0.png
