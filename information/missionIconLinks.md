@@ -177,73 +177,81 @@
 - icon: https://rettungssimulator.online/images/marker/missions/crane_0.png
 
 45. 
+- name: bicycle
+- icon: https://rettungssimulator.online/images/marker/missions/bicycle_0.png
+
+46. 
+- name: trafficLight
+- icon: https://rettungssimulator.online/images/marker/missions/trafficLight_0.png
+
+47. 
 - name: sinkingShip
 - icon: https://rettungssimulator.online/images/marker/missions/sinkingShip_0.png
 
-46. 
+48. 
 - name: gasStation
 - icon: https://rettungssimulator.online/images/marker/missions/gasStation_0.png
 
-47. 
+49. 
 - name: parachute
 - icon: https://rettungssimulator.online/images/marker/missions/parachute_0.png
 
-48. 
+50. 
 - name: gun
 - icon: https://rettungssimulator.online/images/marker/missions/gun_0.png
 
-49. 
+51. 
 - name: bulkyWasteFire
 - icon: https://rettungssimulator.online/images/marker/missions/bulkyWasteFire_0.png
 
-50. 
+52. 
 - name: electricalDeviceFire
 - icon: https://rettungssimulator.online/images/marker/missions/electricalDeviceFire_0.png
 
-51. 
+53. 
 - name: treeFire
 - icon: https://rettungssimulator.online/images/marker/missions/treeFire_0.png
 
-52. 
+54. 
 - name: truckInDitch
 - icon: https://rettungssimulator.online/images/marker/missions/truckInDitch_0.png
 
-53. 
+55. 
 - name: rat
 - icon: https://rettungssimulator.online/images/marker/missions/rat_0.png
 
-54. 
+56. 
 - name: snake
 - icon: https://rettungssimulator.online/images/marker/missions/snake_0.png
 
-55. 
+57. 
 - name: swan
 - icon: https://rettungssimulator.online/images/marker/missions/swan_0.png
 
-56. 
+58. 
 - name: treeOnStreet
 - icon: https://rettungssimulator.online/images/marker/missions/treeOnStreet_0.png
 
-57. 
+59. 
 - name: elevator
 - icon: https://rettungssimulator.online/images/marker/missions/elevator_0.png
 
-58. 
+60. 
 - name: graffiti
 - icon: https://rettungssimulator.online/images/marker/missions/graffiti_0.png
 
-59. 
+61. 
 - name: demonstration
 - icon: https://rettungssimulator.online/images/marker/missions/demonstration_0.png
 
-60. 
+62. 
 - name: manhole
 - icon: https://rettungssimulator.online/images/marker/missions/manhole_0.png
 
-61. 
+63. 
 - name: paperContainerFire
 - icon: https://rettungssimulator.online/images/marker/missions/paperContainerFire_0.png
 
-62. 
+64. 
 - name: deadAnimal
 - icon: https://rettungssimulator.online/images/marker/missions/deadAnimal_0.png
