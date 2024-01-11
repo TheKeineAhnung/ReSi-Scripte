@@ -141,8 +141,8 @@
 - icon: https://rettungssimulator.online/images/marker/missions/motorcycleFire_0.png
 
 36. 
-- name: signalTower
-- icon: https://rettungssimulator.online/images/marker/missions/signalTower_0.png
+- name: signalTowerFire
+- icon: https://rettungssimulator.online/images/marker/missions/signalTowerFire_0.png
 
 37. 
 - name: streetFlood
