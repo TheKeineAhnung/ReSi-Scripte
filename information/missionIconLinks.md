@@ -265,25 +265,29 @@
 - icon: https://rettungssimulator.online/images/marker/missions/treeOnStreet_0.png
 
 67. 
+- name: strawTrailerFire
+- icon: https://rettungssimulator.online/images/marker/missions/strawTrailerFire_0.png
+
+68. 
 - name: elevator
 - icon: https://rettungssimulator.online/images/marker/missions/elevator_0.png
 
-68. 
+69. 
 - name: graffiti
 - icon: https://rettungssimulator.online/images/marker/missions/graffiti_0.png
 
-69. 
+70. 
 - name: demonstration
 - icon: https://rettungssimulator.online/images/marker/missions/demonstration_0.png
 
-70. 
+71. 
 - name: manhole
 - icon: https://rettungssimulator.online/images/marker/missions/manhole_0.png
 
-71. 
+72. 
 - name: paperContainerFire
 - icon: https://rettungssimulator.online/images/marker/missions/paperContainerFire_0.png
 
-72. 
+73. 
 - name: deadAnimal
 - icon: https://rettungssimulator.online/images/marker/missions/deadAnimal_0.png
