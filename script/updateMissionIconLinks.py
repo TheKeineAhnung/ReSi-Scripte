@@ -29,7 +29,7 @@ def writefile(content):
 
 def build_link(icon_name):
     icon_link_start = "https://rettungssimulator.online/images/marker/missions/"
-    icon_link_end = "_0.png"
+    icon_link_end = "_0.svg"
     return icon_link_start + icon_name + icon_link_end
 
 def parse_json(json_data):
