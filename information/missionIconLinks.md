@@ -325,45 +325,49 @@
 - icon: https://rettungssimulator.online/images/marker/missions/school_1.svg
 
 82. 
+- name: collapsedBuilding
+- icon: https://rettungssimulator.online/images/marker/missions/collapsedBuilding_1.svg
+
+83. 
 - name: swan
 - icon: https://rettungssimulator.online/images/marker/missions/swan_1.svg
 
-83. 
+84. 
 - name: treeOnStreet
 - icon: https://rettungssimulator.online/images/marker/missions/treeOnStreet_1.svg
 
-84. 
+85. 
 - name: strawTrailerFire
 - icon: https://rettungssimulator.online/images/marker/missions/strawTrailerFire_1.svg
 
-85. 
+86. 
 - name: elevator
 - icon: https://rettungssimulator.online/images/marker/missions/elevator_1.svg
 
-86. 
+87. 
 - name: graffiti
 - icon: https://rettungssimulator.online/images/marker/missions/graffiti_1.svg
 
-87. 
+88. 
 - name: demonstration
 - icon: https://rettungssimulator.online/images/marker/missions/demonstration_1.svg
 
-88. 
+89. 
 - name: streetLampFire
 - icon: https://rettungssimulator.online/images/marker/missions/streetLampFire_1.svg
 
-89. 
+90. 
 - name: vendingMachineFire
 - icon: https://rettungssimulator.online/images/marker/missions/vendingMachineFire_1.svg
 
-90. 
+91. 
 - name: manhole
 - icon: https://rettungssimulator.online/images/marker/missions/manhole_1.svg
 
-91. 
+92. 
 - name: paperContainerFire
 - icon: https://rettungssimulator.online/images/marker/missions/paperContainerFire_1.svg
 
-92. 
+93. 
 - name: deadAnimal
 - icon: https://rettungssimulator.online/images/marker/missions/deadAnimal_1.svg
